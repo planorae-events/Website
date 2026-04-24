@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - Planorae</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header" id="header">
+        <div class="container nav-wrap">
+            <a href="/" class="brand">Planorae</a>
+            
+            <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-label="Open menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="site-nav" id="siteNav">
+                <div class="nav-links">
+                    <a href="/#about">About</a>
+                    <a href="/#travel">Travel</a>
+                    <a href="/#events">Events</a>
+                    <a href="/#why">Why Us</a>
+                    <a href="/#contact">Contact</a>
+                </div>
+
+                <div class="nav-actions">
+                    <div id="authLinks" class="auth-group">
+                        <button id="loginBtn" class="btn-link" onclick="window.location.href='/#login'">Login</button>
+                        <button id="signupBtn" class="btn-link" onclick="window.location.href='/#signup'">Signup</button>
+                    </div>
+                    
+                    <div id="userMenu" class="user-group" style="display: none;">
+                        <span id="userNameDisplay" class="user-name"></span>
+                        <button id="profileBtn" class="btn-link" onclick="window.location.href='/src/profile.html'">Profile</button>
+                        <button id="logoutBtn" class="btn-link">Logout</button>
+                    </div>
+
+                    <div id="contactActions" style="display: none;">
+                        <a class="cta-small whatsapp-btn" href="#" id="whatsappAction">Book on WhatsApp</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div id="toastContainer" style="position: fixed; bottom: 2rem; right: 2rem; z-index: 2000; pointer-events: none;"></div>
+
+    <main class="profile-page-main">
+        <div class="profile-container container">
+            <!-- Left Column: Main Profile Section -->
+            <div class="profile-main-column">
+                <div class="profile-card linkedin-style">
+                    <!-- Background Banner -->
+                    <div class="profile-banner"></div>
+                    
+                    <!-- Profile Header -->
+                    <div class="profile-header">
+                        <div class="profile-avatar-wrap">
+                            <div class="profile-avatar">👤</div>
+                        </div>
+                        <div class="profile-intro">
+                            <h1 id="profilePageTitle">Create Your Travel Profile</h1>
+                            <p id="profilePageSubtitle">Set up your preferences to find the perfect travel matches.</p>
+                        </div>
+                    </div>
+
+                    <!-- Profile Form (LinkedIn Style) -->
+                    <form id="profileForm" class="linkedin-form">
+                        <div class="form-section">
+                            <h3>Basics</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="gender">Gender</label>
+                                    <select id="gender">
+                                        <option value="">Select Gender</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="budget">Budget Range (e.g., 10k-20k)</label>
+                                    <input type="text" id="budget" placeholder="10k-20k">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3>Travel Preferences</h3>
+                            <div class="form-group">
+                                <label for="interests">Interests (comma separated)</label>
+                                <input type="text" id="interests" placeholder="nightlife, trekking, beaches, adventure, culture">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="travelStyle">Travel Style</label>
+                                    <select id="travelStyle">
+                                        <option value="">Select Style</option>
+                                        <option value="luxury">Luxury</option>
+                                        <option value="backpacking">Backpacking</option>
+                                        <option value="chill">Chill</option>
+                                        <option value="party">Party</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="groupPref">Group Preference</label>
+                                    <select id="groupPref">
+                                        <option value="auto">Join Smart Group (Recommended)</option>
+                                        <option value="private">Book as Private Group</option>
+                                        <option value="create">Create My Own Group</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3>Habits & Preferences</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="drinkingPreference">Drinking Preference</label>
+                                    <select id="drinkingPreference">
+                                        <option value="">Select Preference</option>
+                                        <option value="yes">Yes</option>
+                                        <option value="no">No</option>
+                                        <option value="occasionally">Occasionally</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="smokingPreference">Smoking Preference</label>
+                                    <select id="smokingPreference">
+                                        <option value="">Select Preference</option>
+                                        <option value="yes">Yes</option>
+                                        <option value="no">No</option>
+                                        <option value="occasionally">Occasionally</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="hobbies">Hobbies</label>
+                                <input type="text" id="hobbies" placeholder="Photography, Music, etc.">
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary" id="profileSubmitBtn">Save Profile</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Right Column: Sidebar (LinkedIn style) -->
+            <aside class="profile-sidebar">
+                <div class="sidebar-card">
+                    <h3>Profile Strength</h3>
+                    <div class="strength-meter">
+                        <div class="meter-bar"><div class="meter-fill" style="width: 30%;"></div></div>
+                        <p>Beginner</p>
+                    </div>
+                </div>
+                <div class="sidebar-card">
+                    <h3>Why complete this?</h3>
+                    <p>Completed profiles get 3x more accurate travel matches and better group recommendations.</p>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <script type="module" src="main.ts"></script>
+    <script type="module" src="profile.ts"></script>
+</body>
+</html>
